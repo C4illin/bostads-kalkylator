@@ -1,0 +1,166 @@
+<div class="mx-auto max-w-3xl p-6">
+  <h1 class="mb-6 text-3xl font-semibold">Bostadskalkylator</h1>
+
+  <div class="grid gap-6 md:grid-cols-2">
+    <section class="space-y-3">
+      <h2 class="text-lg font-medium">Indata</h2>
+
+      <label class="block">
+        <span class="block text-sm text-gray-700 dark:text-gray-300"
+          >Bostadspris (kr)</span
+        >
+        <input
+          type="text"
+          inputmode="numeric"
+          id="bostads-pris"
+          data-format="sek"
+          class="mt-1 w-full rounded border border-gray-300 bg-white px-3 py-2 dark:border-gray-600 dark:bg-gray-800"
+        />
+      </label>
+
+      <label class="block">
+        <span class="block text-sm text-gray-700 dark:text-gray-300"
+          >Avgift (kr/mån)</span
+        >
+        <input
+          type="text"
+          inputmode="numeric"
+          id="avgift"
+          data-format="sek"
+          class="mt-1 w-full rounded border border-gray-300 bg-white px-3 py-2 dark:border-gray-600 dark:bg-gray-800"
+        />
+      </label>
+
+      <label class="block">
+        <span class="block text-sm text-gray-700 dark:text-gray-300"
+          >Driftkostnad (kr/mån)</span
+        >
+        <input
+          type="text"
+          inputmode="numeric"
+          id="driftkostnad"
+          data-format="sek"
+          class="mt-1 w-full rounded border border-gray-300 bg-white px-3 py-2 dark:border-gray-600 dark:bg-gray-800"
+        />
+      </label>
+
+      <label class="block">
+        <span class="block text-sm text-gray-700 dark:text-gray-300"
+          >Kontantinsats (%)</span
+        >
+        <input
+          type="number"
+          id="procent-kontant-insats"
+          value="10"
+          class="mt-1 w-full rounded border border-gray-300 bg-white px-3 py-2 dark:border-gray-600 dark:bg-gray-800"
+        />
+      </label>
+
+      <label class="block">
+        <span class="block text-sm text-gray-700 dark:text-gray-300"
+          >Låneränta (% / år)</span
+        >
+        <input
+          type="number"
+          id="lan-ranta"
+          value="3"
+          class="mt-1 w-full rounded border border-gray-300 bg-white px-3 py-2 dark:border-gray-600 dark:bg-gray-800"
+        />
+      </label>
+
+      <label class="block">
+        <span class="block text-sm text-gray-700 dark:text-gray-300"
+          >Bostadens värdeökning (% / år)</span
+        >
+        <input
+          type="number"
+          id="bostad-vardeokning"
+          value="1"
+          class="mt-1 w-full rounded border border-gray-300 bg-white px-3 py-2 dark:border-gray-600 dark:bg-gray-800"
+        />
+      </label>
+
+      <label class="block">
+        <span class="block text-sm text-gray-700 dark:text-gray-300"
+          >Börsens värdeökning (% / år)</span
+        >
+        <input
+          type="number"
+          id="borsen-vardeokning"
+          value="7"
+          class="mt-1 w-full rounded border border-gray-300 bg-white px-3 py-2 dark:border-gray-600 dark:bg-gray-800"
+        />
+      </label>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-lg font-medium">Resultat</h2>
+
+      <dl
+        class="space-y-1 rounded border border-gray-300 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-900"
+      >
+        <div class="flex justify-between">
+          <dt>Lånebelopp</dt>
+          <dd id="lan-belopp" class="font-medium"></dd>
+        </div>
+        <div class="flex justify-between">
+          <dt>Kontantinsats</dt>
+          <dd id="kontant-insats" class="font-medium"></dd>
+        </div>
+      </dl>
+
+      <dl
+        class="space-y-1 rounded border border-gray-300 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-900"
+      >
+        <div class="mb-1 text-sm font-medium text-gray-600 dark:text-gray-400">
+          Månadskostnader
+        </div>
+        <div class="flex justify-between">
+          <dt>Ränta (brutto)</dt>
+          <dd id="manad-ranta-brutto" class="font-medium"></dd>
+        </div>
+        <div class="flex justify-between">
+          <dt>Ränteavdrag</dt>
+          <dd id="manad-ranteavdrag" class="font-medium"></dd>
+        </div>
+        <div
+          class="flex justify-between border-t border-gray-300 pt-1 dark:border-gray-700"
+        >
+          <dt class="font-bold">Ränta (efter avdrag)</dt>
+          <dd id="manad-ranta-netto" class="font-bold"></dd>
+        </div>
+        <div class="flex justify-between">
+          <dt>Avgift</dt>
+          <dd id="manad-avgift" class="font-medium"></dd>
+        </div>
+        <div class="flex justify-between">
+          <dt>Driftkostnad</dt>
+          <dd id="manad-driftkostnad" class="font-medium"></dd>
+        </div>
+        <div class="flex justify-between">
+          <dt>Kapitalkostnad</dt>
+          <dd id="manad-kapitalkostnad" class="font-medium"></dd>
+        </div>
+        <div class="flex justify-between">
+          <dt>Värdeökning</dt>
+          <dd id="manad-vardeokning" class="font-medium"></dd>
+        </div>
+        <div
+          class="mt-2 flex justify-between border-t border-gray-300 pt-2 dark:border-gray-700"
+        >
+          <dt class="font-semibold">Total</dt>
+          <dd id="manad-total" class="font-extrabold"></dd>
+        </div>
+
+        <div class="flex justify-between">
+          <dt>Amortering</dt>
+          <dd id="amortering" class="font-medium"></dd>
+        </div>
+        <div class="flex justify-between">
+          <dt>Ut från kontot</dt>
+          <dd id="manad-ut-fran-kontot"></dd>
+        </div>
+      </dl>
+    </section>
+  </div>
+</div>
