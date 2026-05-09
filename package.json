@@ -7,14 +7,20 @@
     "dev": "vp dev",
     "build": "tsc && vp build",
     "preview": "vp preview",
-    "prepare": "vp config"
+    "prepare": "vp config",
+    "lint": "vp lint",
+    "format": "vp fmt"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.4",
+    "@types/node": "^24.12.3",
     "tailwindcss": "^4.2.4",
     "typescript": "~6.0.2",
     "vite": "catalog:",
     "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": "^24.15.0"
   },
   "packageManager": "pnpm@11.0.9"
 }

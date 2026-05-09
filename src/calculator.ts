@@ -30,8 +30,7 @@ function rantaAvdrag(arsRanta: number): number {
   return cap * 0.3 + (arsRanta - cap) * 0.21;
 }
 
-const byId = <T extends HTMLElement>(id: string): T =>
-  document.getElementById(id) as T;
+const byId = <T extends HTMLElement>(id: string): T => document.getElementById(id) as T;
 
 const formatSEK = (n: number): string =>
   new Intl.NumberFormat("sv-SE", {
@@ -44,15 +43,13 @@ const num = (el: HTMLInputElement): number =>
   Number(el.value.replace(/[\s ]/g, "").replace(",", ".")) || 0;
 
 // Insert a regular space between every group of three digits from the right.
-const groupDigits = (digits: string): string =>
-  digits.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+const groupDigits = (digits: string): string => digits.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 
 // Format a number-style input in place, preserving cursor position.
 function formatGroupedInput(el: HTMLInputElement): void {
   const oldValue = el.value;
   const oldStart = el.selectionStart ?? oldValue.length;
-  const digitsBeforeCursor = oldValue.slice(0, oldStart).replace(/\D/g, "")
-    .length;
+  const digitsBeforeCursor = oldValue.slice(0, oldStart).replace(/\D/g, "").length;
 
   const digits = oldValue.replace(/\D/g, "");
   const formatted = digits === "" ? "" : groupDigits(digits);
@@ -96,11 +93,7 @@ function update(inputs: Inputs, outputs: Outputs): void {
   const manadVardeokning = (pris * bostadAppr) / 12;
 
   const manadTotal =
-    manadRantaNetto +
-    avgift +
-    driftkostnad +
-    manadKapitalkostnad -
-    manadVardeokning;
+    manadRantaNetto + avgift + driftkostnad + manadKapitalkostnad - manadVardeokning;
 
   outputs.kontantInsats.textContent = formatSEK(kontantInsats);
   outputs.lanBelopp.textContent = formatSEK(lanBelopp);
@@ -111,8 +104,7 @@ function update(inputs: Inputs, outputs: Outputs): void {
   outputs.manadDriftkostnad.textContent = formatSEK(driftkostnad);
   outputs.manadKapitalkostnad.textContent = formatSEK(manadKapitalkostnad);
   outputs.manadVardeokning.textContent = formatSEK(-manadVardeokning);
-  const manadUtFranKontot =
-    manadAmortering + avgift + driftkostnad + manadRantaNetto;
+  const manadUtFranKontot = manadAmortering + avgift + driftkostnad + manadRantaNetto;
 
   outputs.manadTotal.textContent = formatSEK(manadTotal);
   outputs.amortering.textContent = formatSEK(manadAmortering);
